@@ -1,5 +1,7 @@
 For instructions to get the BLE client working please refer to the repo: https://github.com/ashok-rao/BLE_Client_My_OPT3001.git
 
+There is a slide deck in the repo that should help with an overview of the entire application. Please refer to this.
+
 # Getting started with mbed Client on mbed OS
 
 This is the mbed Client example for mbed OS. It demonstrates how to register a device with mbed Device Connector, how to read a device/resource and how to deregister. If you are unfamiliar with mbed Device Connector, it is recommended that you read [the introduction to the data model](https://docs.mbed.com/docs/mbed-device-connector-web-interfaces/en/latest/#the-mbed-device-connector-data-model) first.
