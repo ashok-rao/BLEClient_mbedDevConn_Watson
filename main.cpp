@@ -133,6 +133,7 @@ void serviceDiscoveryCallback(const DiscoveredService *service) {
     }
 }
 
+//This function is not used. ToDo: get rid of it and any references.
 void updateLedCharacteristic(void) {
     if (!BLE::Instance().gattClient().isServiceDiscoveryActive()) {
         optCharacteristic.read();
@@ -150,8 +151,6 @@ void characteristicDiscoveryCallback(const DiscoveredCharacteristic *characteris
 
 void discoveryTerminationCallback(Gap::Handle_t connectionHandle) {
     printf("terminated SD for handle %u\r\n", connectionHandle);
-	
-	//Turn on BLUE LED once connection is established.
 	if(connectionHandle != 0) {
 //		led2 = 1;
 	}
@@ -193,9 +192,6 @@ payload_length = response-> len;
 
 void disconnectionCallback(const Gap::DisconnectionCallbackParams_t *) {
     printf("disconnected\r\n");
-	
-	//Turn off BLUE led if connection is lost.
-	//led2 = 0;
     /* Start scanning and try to connect again */
     BLE::Instance().gap().startScan(advertisementCallback);
 }
@@ -228,7 +224,7 @@ void bleInitComplete(BLE::InitializationCompleteCallbackContext *params)
 	ble.gap().onDisconnection(disconnectionCallback);
 	ble.gap().onConnection(connectionCallback);
 
-//	ASHOK
+// On reading data, call triggerRead function.
 ble.gattClient().onDataRead(triggerRead);
 		
 		// scan interval: 400ms and scan window: 400ms.
@@ -534,12 +530,14 @@ void trace_printer(const char* str) {
 }
 
 /****************************************************************More BLE Stuff from here****************/
-
+//BLE thread init and further calls to other BLE methods.
 void BLE_thread_init(void){
 	printf("I'm inside BLE thread.....\r\n");
 	eventQueue.call_every(500, blinky);
+//Schedule events before starting the thread since there might be some missed events while scanning / pairing.
 	ble.onEventsToProcess(scheduleBleEventsProcessing);
 	ble.init(bleInitComplete);
+//Loop forever the BLE thread
 	eventQueue.dispatch_forever();
 }
 
@@ -550,7 +548,8 @@ int main() {
 
     unsigned int seed;
     size_t len;
-	
+
+	//Create a new thread for BLE
 	Thread BLE_thread;
 	
 
@@ -659,7 +658,7 @@ Add MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES and MBEDTLS_TEST_NULL_ENTROPY in mbed_app
     mbed_client.test_register(register_object, object_list);
     registered = true;
 
-	
+//Start BLE thread after connection is established to device connector. Else, there is conflict.
 	BLE_thread.start(BLE_thread_init);
 	
     while (true) {
