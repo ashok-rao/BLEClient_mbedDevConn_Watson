@@ -16,7 +16,7 @@ The application:
 
 ## Required hardware
 
-* NUCLEO_F429ZI target platform (with hardware modification for SB121 and SB122 - the resistor needs to be shorted across SB122 since there is an SPI pin conflict between the arduino connector and the LAN controller).
+* NUCLEO_F429ZI target platform #(with hardware modification for SB121 and SB122 - the resistor needs to be shorted across SB122 since there is an SPI pin conflict between the arduino connector and the LAN controller).
 * ST BLE shield (X-NUCLEO-IDB05A1)
 * 1x micro-USB cable.
 * Ethernet cable and connection to the internet.
