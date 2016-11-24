@@ -13,6 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+/*
+TODO:
+1. Remove references to K64F & use NUCLEO_F429ZI only.
+2. Tested with Ethernet. Remove references to wireless technologies.
+3. More formatting when I find some free time.
+*/
+
 #include "simpleclient.h"
 #include <string>
 #include <sstream>
@@ -183,6 +191,7 @@ payload_length = response-> len;
 			dataforClient[i] = response -> data[i];
 	//		printf("%d", dataforClient[i]);
 		}
+//BLE packet contains 4 bytes of 8 bit int's each. Combine all of them to form a single 32-bit int.
 		final_dataforClient = ((uint32_t)dataforClient[3]<<24) | (dataforClient[2]<<16) | (dataforClient[1] << 8) | (dataforClient[0]);
 		printf("Final data for cleint = %x\r\n", final_dataforClient);
 	//	printf("\r\n");
