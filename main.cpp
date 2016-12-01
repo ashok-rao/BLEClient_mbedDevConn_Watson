@@ -18,7 +18,7 @@
 TODO:
 1. Remove references to K64F & use NUCLEO_F429ZI only.
 2. Tested with Ethernet. Remove references to wireless technologies.
-3. More formatting when I find some free time.
+3. More formatting / code clean up when I find some free time.
 */
 
 #include "simpleclient.h"
