@@ -18,9 +18,10 @@
  
 #include <inttypes.h>
  
-#define MBED_DOMAIN "4889bada-5a55-46dc-9c26-20a12c588291"
-#define MBED_ENDPOINT_NAME "32bb8cb5-64a3-4296-bc92-0bd77701b59b"
- 
+//#define MBED_DOMAIN "4889bada-5a55-46dc-9c26-20a12c588291"
+//#define MBED_ENDPOINT_NAME "32bb8cb5-64a3-4296-bc92-0bd77701b59b"
+
+/*
 const uint8_t SERVER_CERT[] = "-----BEGIN CERTIFICATE-----\r\n"
 "MIIBmDCCAT6gAwIBAgIEVUCA0jAKBggqhkjOPQQDAjBLMQswCQYDVQQGEwJGSTEN\r\n"
 "MAsGA1UEBwwET3VsdTEMMAoGA1UECgwDQVJNMQwwCgYDVQQLDANJb1QxETAPBgNV\r\n"
@@ -53,3 +54,6 @@ const uint8_t KEY[] = "-----BEGIN PRIVATE KEY-----\r\n"
 "-----END PRIVATE KEY-----\r\n";
  
 #endif //__SECURITY_H__
+*/
+
+//Please use your credentials.
